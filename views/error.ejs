@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3{
+            color: red;
+            text-align: center;
+        }
+        body {
+        background: radial-gradient(#F7EEDD, #008DDA);
+        /* background-color: black; */
+      }
+      .flx{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      button{
+        color: #F7EEDD;
+        background-color: #008DDA;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        transition: 0.3s;
+        font-weight: bold;
+        border: 1px solid #008DDA;
+      }
+    button:hover{
+        background-color: #F7EEDD;
+        color: #008DDA;
+        border: 1px solid #008DDA;
+      }
+    </style>
+</head>
+<body>
+    <div class="flx">
+        <div>
+            <h3>Error</h3>
+            <%if(!b){%>
+                <h3>Branch is undefined</h3>
+            <%}%>
+            <%if(!n){%>
+                <h3>Name is undefined</h3>
+            <%}%>
+            <%if(!c){%>
+                <h3>College Name is undefined</h3>
+            <%}%>
+            <%if(!r){%>
+                <h3>Roll number is undefined</h3>
+            <%}%>
+            <%if(!t){%>
+                <h3>Title is undefined</h3>
+            <%}%>
+            <%if(!s){%>
+                <h3>Start Date is undefined</h3>
+            <%}%>
+            <%if(!e){%>
+                <h3>End Date is undefined</h3>
+            <%}%>
+            <%if(!g){%>
+                <h3>Gender is undefined</h3>
+            <%}%>
+            <div style="display: flex;justify-content: center;">
+                <a href="/"><button>Upload new File</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

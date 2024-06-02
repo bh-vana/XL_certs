@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body {
+        
+        background: radial-gradient(#F7EEDD, #008DDA);
+        /* background-color: black; */
+      }
+      .center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+        margin: 0;
+      }
+      .center-container {
+          height: 30%;
+          /* background: linear-gradient(to right, #F7EEDD, pink); */
+          text-align: center;
+          border-radius: 10px;
+      }
+
+      form {
+        display: flex;
+        align-items: center;
+      }
+      h2{
+        padding-bottom: 8px;
+      }
+      button{
+        color: #FFF9D0;
+        background-color: #008DDA;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        transition: 0.3s;
+        font-weight: bold;
+        border: 1px solid #008DDA;
+      }
+      input{
+        border: none;
+        padding: 7px;
+        border-radius: 7px;
+        transition: 0.3s;
+        background-color: #FFF9D0;
+        color: #008DDA;
+        border: 1px solid #FFF9D0;
+        font-weight: bold;
+      }
+      button:hover{
+        background-color: #F7EEDD;
+        color: #008DDA;
+        border: 1px solid #008DDA;
+      }
+      input:hover{
+        color: #F7EEDD;
+        background-color: #008DDA;
+        border: 1px solid #008DDA;
+      }
+      .flx2{
+        display: flex;
+        gap:20px;
+      }
+      .flx{
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .flx3{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      footer{
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 30px;
+      }
+      footer a{
+        text-decoration: none;
+        color: black;
+        padding: 10px;
+        border-radius: 7px;
+        background-color: #F7EEDD;
+      }
+    </style>
+</head>
+<body>
+  <div class="center">
+  <div class="center-container">
+    <h2>Please Upload Excel file here</h2>
+    <div class="flx3">
+    <form id="excelForm" enctype="multipart/form-data" class="flx2">
+        <input type="file" name="excelFile" accept=".xlsx, .xls">
+        <button type="submit">Upload Excel</button>
+    </form>
+    <div class="flx">
+      <img src="/format.jpg" alt="format of excel" />
+    </div>
+    </div>
+    <h4 style="color: red;">&#9888 Excel field names must be same as mentioned above !!!</h4>
+    </div>
+    </div>
+    <footer>
+      <a href="/contact">Contact details</a>
+    </footer>
+      <script>
+      document.getElementById('excelForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        var formData = new FormData();
+        formData.append('excelFile', document.querySelector('input[name="excelFile"]').files[0]);
+      
+        fetch('/upload', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+        if(response.ok) {
+          return response.text(); // Extract HTML content from the response
+        } else {
+          throw new Error('Error uploading Excel file.');
+        }
+      })
+      .then(htmlContent => {
+        // Open a new window/tab with the HTML content
+        document.open();
+        document.write(htmlContent);
+        document.close();
+        /*var newWindow = window.open();
+        newWindow.document.write(htmlContent);
+        newWindow.document.close();*/
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+      });
+      </script>
+      
+</body>
+</html>

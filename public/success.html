@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download PDFs</title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh; 
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        background: radial-gradient(#F7EEDD, #008DDA);
+    }
+
+    .center-container {
+        text-align: center;
+    }
+    button{
+        color: #F7EEDD;
+        background-color: #008DDA;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        transition: 0.3s;
+        font-weight: bold;
+        border: 1px solid #008DDA;
+      }
+    button:hover{
+        background-color: #F7EEDD;
+        color: #008DDA;
+        border: 1px solid #008DDA;
+      }
+    </style>
+</head>
+<body>
+    <div class="center-container">
+        <h1>Download Documents</h1>
+        <p>Click the button below to download the docx files.</p>
+        <a href="/download" download="certificates.zip"><button>Download certificates</button></a>
+        <a href="/offer" download="offerLetters.zip"><button>Download OfferLetters</button></a>
+        <div style="margin-top: 20px;">
+            <a href="/"><button>upload a new file</button></a>
+        </div>
+    </div>
+</body>
+</html>
